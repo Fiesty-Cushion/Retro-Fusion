@@ -20,3 +20,7 @@ config/icon="res://icon.svg"
 Globals="*res://globals.gd"
 Socket="*res://socket.gd"
 Udp="*res://udp.gd"
+
+[dotnet]
+
+project/assembly_name="Retrofusion-Draft"
