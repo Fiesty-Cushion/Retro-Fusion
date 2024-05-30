@@ -11,8 +11,11 @@ func _init():
 	Globals.user_disconnected.connect(_on_user_disconnected)
 	
 func _on_socket_data_received(json:JSON):
-	var quater : Quaternion = Quaternion(json.data.ori.x, json.data.ori.z, -json.data.ori.y , -json.data.ori.w )	
+	print(json.data.ori) 
+	var quater : Quaternion = Quaternion(-json.data.ori.x, -json.data.ori.z, json.data.ori.y , -json.data.ori.w )	
+	var quat2 : Quaternion = Quaternion(0, 0, 0, 1)
 	mobile.global_transform.basis = Basis(quater).scaled(global_transform.basis.get_scale())
+	
 	
 func _input(event):
 	if Input.is_action_just_pressed("ui_accept"):
