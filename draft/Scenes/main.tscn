@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://jli4iawcbp1e"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
+[ext_resource type="PackedScene" uid="uid://wegvwc22es6v" path="res://Scenes/mobile.tscn" id="2_1hhmc"]
+[ext_resource type="Texture2D" uid="uid://cquu5w1sjp8gq" path="res://Resources/251.jpg" id="3_r185p"]
+[ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
+[ext_resource type="Texture2D" uid="uid://c5kbvpxoq3sos" path="res://Resources/pitch.jpg" id="5_6hked"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
+albedo_texture = ExtResource("5_6hked")
+uv1_scale = Vector3(0.2, 0.2, 0.2)
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_plt6j"]
+material = SubResource("StandardMaterial3D_moygn")
+size = Vector2(12, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4qh0"]
+albedo_color = Color(0.137255, 0.694118, 0.376471, 1)
+albedo_texture = ExtResource("3_r185p")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_o1jwc"]
+material = SubResource("StandardMaterial3D_q4qh0")
+size = Vector3(500, 0.5, 500)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fdl6s"]
+size = Vector3(500, 0.5, 500)
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_kfkr7")
+
+[node name="sword" parent="." instance=ExtResource("2_1hhmc")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -1.17599, 5.10629, -6.46525)
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.975688, 0.219166, 0, -0.219166, 0.975688, 1.08092, 9.6258, 3.27691)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0579825, 0.998318, 0, -0.998318, -0.0579825, 0, 8, 0)
+shadow_enabled = true
+
+[node name="floor" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26, -30.154)
+mesh = SubResource("PlaneMesh_plt6j")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+mesh = SubResource("BoxMesh_o1jwc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
+shape = SubResource("BoxShape3D_fdl6s")
+
+[node name="bat" parent="." instance=ExtResource("4_kduuw")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.17599, 4.33448, -6.46525)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
