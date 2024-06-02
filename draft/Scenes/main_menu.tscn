@@ -1,20 +1,20 @@
 [gd_scene load_steps=14 format=3 uid="uid://dwb17gyuwepiu"]
 
-[ext_resource type="Texture2D" uid="uid://1ofrufqr06p1" path="res://assets/main_menu/background.png" id="1_26j21"]
-[ext_resource type="Shader" path="res://background.gdshader" id="1_hikb4"]
-[ext_resource type="Script" path="res://main_menu.gd" id="1_hwh62"]
-[ext_resource type="Texture2D" uid="uid://k6n1v724mr5v" path="res://assets/buttons/play_normal.png" id="2_1h247"]
-[ext_resource type="Texture2D" uid="uid://bniyb2acdndu7" path="res://assets/main_menu/title.png" id="3_fyhg6"]
-[ext_resource type="Texture2D" uid="uid://c341slr5rptt8" path="res://assets/buttons/play_pressed.png" id="3_vml8a"]
-[ext_resource type="Texture2D" uid="uid://d25jomqbvulhc" path="res://assets/buttons/play_hover.png" id="4_lpwkq"]
-[ext_resource type="Texture2D" uid="uid://drelcnx78yiwg" path="res://assets/buttons/play_disabled.png" id="5_glwjo"]
-[ext_resource type="Texture2D" uid="uid://bu2qw2n1675kc" path="res://assets/buttons/exit_normal.png" id="6_aw0hs"]
-[ext_resource type="Texture2D" uid="uid://cwg23p1wibson" path="res://assets/buttons/exit_pressed.png" id="7_1cxjb"]
-[ext_resource type="Texture2D" uid="uid://m4vl35nk71ti" path="res://assets/buttons/exit_hover.png" id="8_evjny"]
-[ext_resource type="Texture2D" uid="uid://bn1a6clatlyc0" path="res://assets/buttons/exit_disabled.png" id="9_0nmy8"]
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_assfd"]
+[ext_resource type="Shader" path="res://assets/shaders/background.gdshader" id="2_406of"]
+[ext_resource type="Texture2D" uid="uid://1ofrufqr06p1" path="res://assets/main_menu/background.png" id="3_d1n5r"]
+[ext_resource type="Texture2D" uid="uid://bniyb2acdndu7" path="res://assets/main_menu/title.png" id="4_vxa53"]
+[ext_resource type="Texture2D" uid="uid://k6n1v724mr5v" path="res://assets/buttons/play_normal.png" id="5_5xrqk"]
+[ext_resource type="Texture2D" uid="uid://c341slr5rptt8" path="res://assets/buttons/play_pressed.png" id="6_hbmjt"]
+[ext_resource type="Texture2D" uid="uid://d25jomqbvulhc" path="res://assets/buttons/play_hover.png" id="7_qphqi"]
+[ext_resource type="Texture2D" uid="uid://drelcnx78yiwg" path="res://assets/buttons/play_disabled.png" id="8_kjeay"]
+[ext_resource type="Texture2D" uid="uid://bu2qw2n1675kc" path="res://assets/buttons/exit_normal.png" id="9_euolf"]
+[ext_resource type="Texture2D" uid="uid://cwg23p1wibson" path="res://assets/buttons/exit_pressed.png" id="10_uc0np"]
+[ext_resource type="Texture2D" uid="uid://m4vl35nk71ti" path="res://assets/buttons/exit_hover.png" id="11_x1nyx"]
+[ext_resource type="Texture2D" uid="uid://bn1a6clatlyc0" path="res://assets/buttons/exit_disabled.png" id="12_a22tk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tugcj"]
-shader = ExtResource("1_hikb4")
+shader = ExtResource("2_406of")
 
 [node name="MainMenu" type="Control"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -24,7 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_hwh62")
+script = ExtResource("1_assfd")
 
 [node name="BackgroundColor" type="ColorRect" parent="."]
 layout_mode = 1
@@ -45,7 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_26j21")
+texture = ExtResource("3_d1n5r")
 expand_mode = 1
 
 [node name="GameTitle" type="TextureRect" parent="."]
@@ -57,7 +57,7 @@ offset_top = 51.0
 offset_right = -659.0
 offset_bottom = 457.0
 grow_horizontal = 2
-texture = ExtResource("3_fyhg6")
+texture = ExtResource("4_vxa53")
 expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -93,18 +93,18 @@ theme_override_constants/separation = 12
 [node name="RunButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture_normal = ExtResource("2_1h247")
-texture_pressed = ExtResource("3_vml8a")
-texture_hover = ExtResource("4_lpwkq")
-texture_disabled = ExtResource("5_glwjo")
+texture_normal = ExtResource("5_5xrqk")
+texture_pressed = ExtResource("6_hbmjt")
+texture_hover = ExtResource("7_qphqi")
+texture_disabled = ExtResource("8_kjeay")
 
 [node name="ExitButton" type="TextureButton" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
-texture_normal = ExtResource("6_aw0hs")
-texture_pressed = ExtResource("7_1cxjb")
-texture_hover = ExtResource("8_evjny")
-texture_disabled = ExtResource("9_0nmy8")
+texture_normal = ExtResource("9_euolf")
+texture_pressed = ExtResource("10_uc0np")
+texture_hover = ExtResource("11_x1nyx")
+texture_disabled = ExtResource("12_a22tk")
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
