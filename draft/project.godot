@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Retrofusion-Draft"
-run/main_scene="res://Scenes/main.tscn"
+config/name="Retro Fusion"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,6 +20,12 @@ config/icon="res://icon.svg"
 Globals="*res://Scripts/globals.gd"
 Socket="*res://Scripts/socket.gd"
 Udp="*res://Scripts/udp.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
 
 [dotnet]
 
