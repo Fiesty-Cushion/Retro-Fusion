@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Retro Fusion"
-run/main_scene="res://Scenes/main_menu.tscn"
+run/main_scene="res://assets/models/Characters/gltf/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -35,6 +35,10 @@ project/assembly_name="Retrofusion-Draft"
 
 movie_writer/movie_file="F:/GodotProjs/Retro-Fusion/draft/Records/recorded.avi"
 
+[filesystem]
+
+import/fbx/enabled=false
+
 [input]
 
 B_Key={
@@ -42,3 +46,8 @@ B_Key={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":66,"key_label":0,"unicode":98,"echo":false,"script":null)
 ]
 }
+
+[rendering]
+
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/msaa_3d=2
