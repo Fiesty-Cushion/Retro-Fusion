@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
 [ext_resource type="PackedScene" uid="uid://wegvwc22es6v" path="res://Scenes/mobile.tscn" id="2_1hhmc"]
-[ext_resource type="Texture2D" uid="uid://cquu5w1sjp8gq" path="res://Resources/251.jpg" id="3_r185p"]
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
+[ext_resource type="Texture2D" uid="uid://d4fhb6plwerv6" path="res://Resources/grass_text.jpg" id="4_yt8ld"]
 [ext_resource type="Texture2D" uid="uid://c5kbvpxoq3sos" path="res://Resources/pitch.jpg" id="5_6hked"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
@@ -17,7 +17,7 @@ size = Vector2(12, 60)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4qh0"]
 albedo_color = Color(0.137255, 0.694118, 0.376471, 1)
-albedo_texture = ExtResource("3_r185p")
+albedo_texture = ExtResource("4_yt8ld")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 uv2_triplanar = true
@@ -57,7 +57,7 @@ mesh = SubResource("BoxMesh_o1jwc")
 shape = SubResource("BoxShape3D_fdl6s")
 
 [node name="bat" parent="." instance=ExtResource("4_kduuw")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.17599, 4.33448, -6.46525)
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.25018, 3.55449, -6.82664)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
