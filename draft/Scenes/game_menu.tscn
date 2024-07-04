@@ -1,0 +1,184 @@
+[gd_scene load_steps=33 format=3 uid="uid://difexgp18322b"]
+
+[ext_resource type="Script" path="res://Scripts/game_menu.gd" id="1_yw201"]
+[ext_resource type="Shader" path="res://assets/shaders/background.gdshader" id="2_365xd"]
+[ext_resource type="Texture2D" uid="uid://1ofrufqr06p1" path="res://assets/main_menu/background.png" id="3_0nhid"]
+[ext_resource type="Texture2D" uid="uid://c0lh3mga4h1iv" path="res://assets/buttons/home_normal.png" id="4_8p2nj"]
+[ext_resource type="Texture2D" uid="uid://ds5552ndn0mbl" path="res://assets/buttons/home_pressed.png" id="5_eu4yk"]
+[ext_resource type="Texture2D" uid="uid://cbuk0nmhs2r3c" path="res://assets/buttons/home_hover.png" id="6_epy2k"]
+[ext_resource type="Texture2D" uid="uid://dq3c76a5ybltw" path="res://assets/buttons/home_disabled.png" id="7_j61pt"]
+[ext_resource type="FontFile" uid="uid://d0vsn3ye4bc04" path="res://assets/fonts/Nunito-Black.ttf" id="8_vagx3"]
+[ext_resource type="Texture2D" uid="uid://bt4a2niii4mtu" path="res://assets/buttons/cricket_normal.png" id="9_jmqn5"]
+[ext_resource type="Texture2D" uid="uid://2fyapvsdj480" path="res://assets/buttons/cricket_pressed.png" id="10_ktdte"]
+[ext_resource type="Texture2D" uid="uid://2bcekew2xavd" path="res://assets/buttons/cricket_hover.png" id="11_ov400"]
+[ext_resource type="Texture2D" uid="uid://drr0blob58f2l" path="res://assets/buttons/cricket_disabled.png" id="12_723ps"]
+[ext_resource type="Texture2D" uid="uid://dm1wlq2s6ieqd" path="res://assets/buttons/tt_normal.png" id="13_7qovb"]
+[ext_resource type="Texture2D" uid="uid://dmu70cdu27ccs" path="res://assets/buttons/tt_pressed.png" id="14_d4i4j"]
+[ext_resource type="Texture2D" uid="uid://j88cwo0c4f5l" path="res://assets/buttons/tt_hover.png" id="15_60a6x"]
+[ext_resource type="Texture2D" uid="uid://p55g5obj6tg8" path="res://assets/buttons/tt_disabled.png" id="16_8xloi"]
+[ext_resource type="Texture2D" uid="uid://cewgroj383yw1" path="res://assets/buttons/tennis_normal.png" id="17_wlhtk"]
+[ext_resource type="Texture2D" uid="uid://ccjvx1hdqvakb" path="res://assets/buttons/tennis_pressed.png" id="18_wd4fy"]
+[ext_resource type="Texture2D" uid="uid://ouicftev5t86" path="res://assets/buttons/tennis_hover.png" id="19_ugbs4"]
+[ext_resource type="Texture2D" uid="uid://b26mqf2tcmv6s" path="res://assets/buttons/tennis_disabled.png" id="20_ysv12"]
+[ext_resource type="Texture2D" uid="uid://csc6e2ni0k8ai" path="res://assets/buttons/baseball_normal.png" id="21_xjxiq"]
+[ext_resource type="Texture2D" uid="uid://bebys28nlr45u" path="res://assets/buttons/baseball_pressed.png" id="22_wjb33"]
+[ext_resource type="Texture2D" uid="uid://cdr2xccvpakw3" path="res://assets/buttons/baseball_hover.png" id="23_u8yi8"]
+[ext_resource type="Texture2D" uid="uid://ca1n4ir17klk4" path="res://assets/buttons/baseball_disabled.png" id="24_amvf2"]
+[ext_resource type="Texture2D" uid="uid://be0kad8p0jakm" path="res://assets/buttons/golf_normal.png" id="25_d0las"]
+[ext_resource type="Texture2D" uid="uid://kxe0dx83gdod" path="res://assets/buttons/golf_pressed.png" id="26_dm4hg"]
+[ext_resource type="Texture2D" uid="uid://daqf48l3l526v" path="res://assets/buttons/golf_hover.png" id="27_c3bs1"]
+[ext_resource type="Texture2D" uid="uid://ccjuwnpedu0mi" path="res://assets/buttons/golf_disabled.png" id="28_02ovl"]
+[ext_resource type="AudioStream" uid="uid://c30pegmhmdkn4" path="res://assets/sound_effects/click1.ogg" id="29_ei5lf"]
+[ext_resource type="AudioStream" uid="uid://cekorplscvkw3" path="res://assets/sound_effects/click2.ogg" id="30_krsny"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qd7ny"]
+shader = ExtResource("2_365xd")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qh7t3"]
+bg_color = Color(0.211765, 0.513726, 0.529412, 1)
+border_width_left = 14
+border_width_top = 14
+border_width_right = 14
+border_width_bottom = 14
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yw201")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.901961, 1, 0.87451, 1)
+
+[node name="BackgroundPattern" type="TextureRect" parent="."]
+modulate = Color(0.839216, 0.839216, 0.839216, 0.611765)
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qd7ny")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_0nhid")
+expand_mode = 1
+
+[node name="MarginContainer4" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 120.0
+offset_top = 98.0
+offset_right = 1800.0
+offset_bottom = 1000.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer4"]
+layout_mode = 2
+size_flags_vertical = 0
+alignment = 1
+
+[node name="HomeButton" type="TextureButton" parent="MarginContainer4/HBoxContainer" groups=["buttons"]]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+texture_normal = ExtResource("4_8p2nj")
+texture_pressed = ExtResource("5_eu4yk")
+texture_hover = ExtResource("6_epy2k")
+texture_disabled = ExtResource("7_j61pt")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.239216, 0.239216, 0.239216, 1)
+theme_override_fonts/normal_font = ExtResource("8_vagx3")
+theme_override_font_sizes/normal_font_size = 112
+bbcode_enabled = true
+text = "[center]PICK A GAME[/center]"
+fit_content = true
+
+[node name="MarginContainer3" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 120.0
+offset_top = 280.0
+offset_right = 1800.0
+offset_bottom = 1000.0
+
+[node name="Panel" type="Panel" parent="MarginContainer3"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qh7t3")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer3/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 92
+theme_override_constants/margin_right = 160
+theme_override_constants/margin_bottom = 80
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/Panel/MarginContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 74
+
+[node name="CricketButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("9_jmqn5")
+texture_pressed = ExtResource("10_ktdte")
+texture_hover = ExtResource("11_ov400")
+texture_disabled = ExtResource("12_723ps")
+
+[node name="TTButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("13_7qovb")
+texture_pressed = ExtResource("14_d4i4j")
+texture_hover = ExtResource("15_60a6x")
+texture_disabled = ExtResource("16_8xloi")
+
+[node name="TennisButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("17_wlhtk")
+texture_pressed = ExtResource("18_wd4fy")
+texture_hover = ExtResource("19_ugbs4")
+texture_disabled = ExtResource("20_ysv12")
+
+[node name="BaseballButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("21_xjxiq")
+texture_pressed = ExtResource("22_wjb33")
+texture_hover = ExtResource("23_u8yi8")
+texture_disabled = ExtResource("24_amvf2")
+
+[node name="GolfButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
+layout_mode = 2
+size_flags_vertical = 0
+texture_normal = ExtResource("25_d0las")
+texture_pressed = ExtResource("26_dm4hg")
+texture_hover = ExtResource("27_c3bs1")
+texture_disabled = ExtResource("28_02ovl")
+
+[node name="ClickAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("29_ei5lf")
+
+[node name="HoverAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("30_krsny")

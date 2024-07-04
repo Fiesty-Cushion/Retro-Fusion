@@ -42,7 +42,7 @@ func _input(event):
 	#if Input.is_action_just_pressed("B_Key"):
 		#spawn_ball()
 	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")	
+		get_tree().change_scene_to_file("res://Scenes/game_menu.tscn")	
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		Globals.isGameStarted = true  # Stop braodcasting after game has started, might be changed later on if needed
