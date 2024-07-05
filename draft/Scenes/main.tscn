@@ -1,10 +1,12 @@
-[gd_scene load_steps=11 format=3 uid="uid://jli4iawcbp1e"]
+[gd_scene load_steps=16 format=3 uid="uid://jli4iawcbp1e"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
 [ext_resource type="PackedScene" uid="uid://wegvwc22es6v" path="res://Scenes/mobile.tscn" id="2_1hhmc"]
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
 [ext_resource type="Texture2D" uid="uid://d4fhb6plwerv6" path="res://Resources/grass_text.jpg" id="4_yt8ld"]
 [ext_resource type="Texture2D" uid="uid://c5kbvpxoq3sos" path="res://Resources/pitch.jpg" id="5_6hked"]
+[ext_resource type="PackedScene" uid="uid://r3mbbpmcmxmc" path="res://Scenes/stadium.tscn" id="6_3mvgi"]
+[ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
 albedo_texture = ExtResource("5_6hked")
@@ -29,6 +31,16 @@ size = Vector3(500, 0.5, 500)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fdl6s"]
 size = Vector3(500, 0.5, 500)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6yfba"]
+panorama = ExtResource("7_uf0xw")
+
+[sub_resource type="Sky" id="Sky_sd704"]
+sky_material = SubResource("PanoramaSkyMaterial_6yfba")
+
+[sub_resource type="Environment" id="Environment_5a1l2"]
+background_mode = 2
+sky = SubResource("Sky_sd704")
+
 [node name="main" type="Node3D"]
 script = ExtResource("1_kfkr7")
 
@@ -47,10 +59,12 @@ shadow_enabled = true
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26, -30.154)
+visible = false
 mesh = SubResource("PlaneMesh_plt6j")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
+visible = false
 mesh = SubResource("BoxMesh_o1jwc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
@@ -62,5 +76,11 @@ transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.250
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="Full stadium" parent="." instance=ExtResource("6_3mvgi")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.318, 0, -30.848)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5a1l2")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
