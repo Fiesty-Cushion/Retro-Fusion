@@ -16,7 +16,7 @@ radius = 0.35
 height = 0.7
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6pw1w"]
-radius = 0.35
+radius = 0.462161
 
 [node name="ball" type="RigidBody3D"]
 mass = 10.0

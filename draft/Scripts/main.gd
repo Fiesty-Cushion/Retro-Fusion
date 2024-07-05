@@ -34,7 +34,7 @@ func _on_socket_data_received(json:JSON):
 	
 	var new_quater : Quaternion = Quaternion(-json.data.ori.x, -json.data.ori.z, json.data.ori.y , -json.data.ori.w )
 	var relative_quater = _quater_relative(REFERENCE_QUATER, new_quater)	
-	quater = quater.slerp(relative_quater, 0.8)	
+	quater = quater.slerp(new_quater, 0.8)	
 	mobile.global_transform.basis = Basis(quater).scaled(global_transform.basis.get_scale())
 	
 	
