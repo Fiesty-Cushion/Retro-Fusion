@@ -1,2 +1,1 @@
 *.glb filter=lfs diff=lfs merge=lfs -text
-draft/Scenes/stadium.tscn filter=lfs diff=lfs merge=lfs -text
