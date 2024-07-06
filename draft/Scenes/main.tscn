@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
 [ext_resource type="Texture2D" uid="uid://d4fhb6plwerv6" path="res://Resources/grass_text.jpg" id="4_yt8ld"]
 [ext_resource type="Texture2D" uid="uid://c5kbvpxoq3sos" path="res://Resources/pitch.jpg" id="5_6hked"]
-[ext_resource type="PackedScene" uid="uid://r3mbbpmcmxmc" path="res://Scenes/stadium.tscn" id="6_3mvgi"]
+[ext_resource type="PackedScene" uid="uid://wfkmj7d346ho" path="res://Scenes/stadium.glb" id="7_pyfw2"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
@@ -77,10 +77,9 @@ transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.250
 wait_time = 2.0
 autostart = true
 
-[node name="Full stadium" parent="." instance=ExtResource("6_3mvgi")]
-transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0.318, 0, -30.848)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5a1l2")
+
+[node name="stadium" parent="." instance=ExtResource("7_pyfw2")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
