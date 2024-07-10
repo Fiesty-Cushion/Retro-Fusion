@@ -17,7 +17,7 @@ func stop_swing():
 func _physics_process(delta):
 	if is_swinging:
 		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(global_position, global_position + swing_direction * 2.0)
+		var query = PhysicsRayQueryParameters3D.create(global_position, global_position + swing_direction * 3.0)
 		query.collide_with_bodies = true
 		query.collision_mask = collision_mask
 		

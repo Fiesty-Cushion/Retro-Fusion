@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
 [ext_resource type="Texture2D" uid="uid://d4fhb6plwerv6" path="res://Resources/grass_text.jpg" id="4_yt8ld"]
 [ext_resource type="Texture2D" uid="uid://c5kbvpxoq3sos" path="res://Resources/pitch.jpg" id="5_6hked"]
-[ext_resource type="PackedScene" uid="uid://wfkmj7d346ho" path="res://Scenes/stadium.glb" id="7_pyfw2"]
+[ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://Scenes/stadium.tscn" id="7_tkku6"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
@@ -49,10 +49,10 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -1.17599, 5.10629, -6.4
 visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.975688, 0.219166, 0, -0.219166, 0.975688, 1.08092, 9.6258, 3.27691)
+transform = Transform3D(1, 0, 0, 0, 0.975688, 0.219166, 0, -0.219166, 0.975688, 0, 9.626, 3.277)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -0.0579825, 0.998318, 0, -0.998318, -0.0579825, 0, 8, 0)
+transform = Transform3D(0.711436, -0.0378273, 0.701732, -0.702528, -0.0634226, 0.708825, 0.0176927, -0.99727, -0.0716959, 0, 8, 0)
 shadow_enabled = true
 
 [node name="floor" type="StaticBody3D" parent="."]
@@ -80,6 +80,7 @@ autostart = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5a1l2")
 
-[node name="stadium" parent="." instance=ExtResource("7_pyfw2")]
+[node name="stadium" parent="." instance=ExtResource("7_tkku6")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.33743, 0, -33.3247)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
