@@ -5,10 +5,11 @@ extends Control
 
 var game_menu_scene = "res://Scenes/game_menu.tscn"
 
+
 func _on_run_button_pressed():
 	click_audio.play()
-	await  get_tree().create_timer(0.2).timeout
-	
+	await get_tree().create_timer(0.2).timeout
+
 	get_tree().change_scene_to_file(game_menu_scene)
 
 
