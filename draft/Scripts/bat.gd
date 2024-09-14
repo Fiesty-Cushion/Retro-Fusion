@@ -24,6 +24,6 @@ func _physics_process(delta):
 		Globals.batShouldReset = true
 
 	if Globals.batShouldReset:
-		position = position.move_toward(BAT_POSITION, 2 * delta)
+		position = position.move_toward(BAT_POSITION, delta)
 		if position == BAT_POSITION:
 			Globals.batShouldReset = false
