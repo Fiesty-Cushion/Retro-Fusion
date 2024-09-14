@@ -1,8 +1,7 @@
 extends Node
 
-const WEB_SOCKET_PORT := 9642; # MAKE CONFIGURABLE?
-var isGameStarted := false;
+const WEB_SOCKET_PORT := 9642  # MAKE CONFIGURABLE?
+var isGameStarted := false
+var batShouldReset := false
 
-signal socket_data_recieved(json:JSON)
-signal user_connected(id:int, username:String)
-signal user_disconnected(id:int)
+var REFERENCE_QUATER = Quaternion(0, 0, sqrt(2) / 2, sqrt(2) / 2)
