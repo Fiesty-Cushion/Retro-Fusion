@@ -19,12 +19,12 @@ height = 0.7
 radius = 0.35
 
 [node name="ball" type="RigidBody3D" groups=["ball"]]
-mass = 10.0
+mass = 0.16
 physics_material_override = SubResource("PhysicsMaterial_8vi24")
-gravity_scale = 3.0
+gravity_scale = 2.0
 continuous_cd = true
 contact_monitor = true
-linear_velocity = Vector3(0, 0, 50)
+linear_velocity = Vector3(0, 0, 30)
 linear_damp = 0.1
 script = ExtResource("1_c30fx")
 
