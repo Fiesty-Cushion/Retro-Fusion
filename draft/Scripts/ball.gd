@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+
 const BALL_VEL_MIN: int = 40
 const BALL_VEL_MAX: int = 45
 const MIN_VELOCITY: float = 30.0  # Minimum velocity to maintain after collision
@@ -8,6 +9,9 @@ const COLLISION_COOLDOWN: float = 10.0  # Cooldown time in seconds
 
 var can_collide := true
 var last_collision_time := 0.0
+
+var camera : Camera3D
+var follow_ball = false
 
 func _ready():
 	var ball_pos: Vector3 = Vector3(0, 8.7, -50)
@@ -18,6 +22,21 @@ func _ready():
 
 	contact_monitor = true
 	max_contacts_reported = 1
+	
+	camera = get_parent().get_node("Camera3D")
+
+
+func _process(delta):
+	if follow_ball:
+		# Define a direction vector (camera is behind the ball)
+		var direction: Vector3 = Vector3.BACK * 12.0
+
+		# Set the camera position relative to the ball's position
+		camera.global_transform.origin = self.global_transform.origin + direction
+		
+		# Optionally, make the camera look at the bat
+		camera.look_at(get_parent().get_node("bat").global_transform.origin, Vector3.UP)
+		
 
 func _physics_process(delta):
 	if not can_collide:
@@ -68,3 +87,14 @@ func handle_bat_collision(state, bat):
 
 func _on_timer_timeout():
 	queue_free()
+
+func _on_body_entered(body):
+	if body.is_in_group("bat"):
+		follow_ball = true
+		
+		# Create a timer for the camera to follow the ball trajectory
+		await get_tree().create_timer(3.0).timeout.connect(func() -> void:
+			follow_ball = false
+			camera.position = Vector3(-1, 10, 5)
+			camera.look_at(get_parent().get_node("bat").global_transform.origin, Vector3.UP)
+		)

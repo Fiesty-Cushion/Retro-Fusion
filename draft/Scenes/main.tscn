@@ -50,7 +50,7 @@ transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -1.17599, 5.10629, -6.4
 visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1, 9.626, 4.277)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1, 10, 5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711436, -0.0378273, 0.701732, -0.702528, -0.0634226, 0.708825, 0.0176927, -0.99727, -0.0716959, 0, 8, 0)
@@ -74,8 +74,8 @@ shape = SubResource("BoxShape3D_fdl6s")
 [node name="bat" parent="." instance=ExtResource("4_kduuw")]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.25, 3.5, -7)
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 2.0
+[node name="BallTimer" type="Timer" parent="."]
+wait_time = 4.0
 autostart = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -88,4 +88,4 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.33743, 0, -33.3247)
 
 [node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("8_k2nxq")]
 
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BallTimer" to="." method="_on_timer_timeout"]

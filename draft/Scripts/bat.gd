@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+var camera : Camera3D
 const BAT_POSITION: Vector3 = Vector3(-2, 3.5, -7.0)
 
 var current_quaternion: Quaternion = Quaternion.IDENTITY
@@ -8,17 +9,29 @@ const INTERPOLATION_SPEED: float = 50.0
 
 var previous_position: Vector3
 var current_velocity: Vector3
-const MAX_SWING_SPEED: float = 20.0  # Maximum swing speed in m/s
+const MAX_SWING_SPEED: float = 30.0  # Maximum swing speed in m/s
 
 @export var mass: float = 10.0  # Add mass property for physics calculations
 
 func _ready():
 	Socket.quaternion_updated.connect(_on_quaternion_updated)
 	previous_position = global_position
-
+	camera = get_parent().get_node("Camera3D")
 
 func _on_quaternion_updated(new_quaternion: Quaternion):
 	target_quaternion = new_quaternion
+
+
+# To make the camera follow the bat movement
+#func _process(delta):
+	#if camera:
+		#var bat_rotation_quat: Quaternion = self.global_transform.basis.get_rotation_quaternion()
+		#var direction: Vector3 = Vector3.BACK * 12.0  # The camera is 'radius' units behind the bat
+		#var rotated_direction: Vector3 = bat_rotation_quat * direction
+		#rotated_direction.y = max(rotated_direction.y, 0.0)
+		#camera.global_transform.origin = self.global_transform.origin + rotated_direction
+		#camera.look_at(self.global_transform.origin, Vector3.UP)
+		#pass
 
 
 func _physics_process(delta):
