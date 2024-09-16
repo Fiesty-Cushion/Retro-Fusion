@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://jli4iawcbp1e"]
+[gd_scene load_steps=18 format=3 uid="uid://jli4iawcbp1e"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
 [ext_resource type="PackedScene" uid="uid://wegvwc22es6v" path="res://Scenes/mobile.tscn" id="2_1hhmc"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://Scenes/stadium.tscn" id="7_tkku6"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
 [ext_resource type="PackedScene" uid="uid://c6c0ss21lobt5" path="res://Scenes/scoreboard.tscn" id="8_k2nxq"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vo8ws"]
+rough = true
+bounce = 0.1
+absorbent = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
 albedo_texture = ExtResource("5_6hked")
@@ -57,6 +62,7 @@ transform = Transform3D(0.711436, -0.0378273, 0.701732, -0.702528, -0.0634226, 0
 shadow_enabled = true
 
 [node name="floor" type="StaticBody3D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_vo8ws")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26, -30.154)
@@ -72,7 +78,7 @@ mesh = SubResource("BoxMesh_o1jwc")
 shape = SubResource("BoxShape3D_fdl6s")
 
 [node name="bat" parent="." instance=ExtResource("4_kduuw")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.25, 3.5, -7)
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.25, 3.5, -6)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -82,7 +88,7 @@ autostart = true
 environment = SubResource("Environment_5a1l2")
 
 [node name="stadium" parent="." instance=ExtResource("7_tkku6")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.33743, 0, -33.3247)
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -1.33743, 0, -33.3247)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

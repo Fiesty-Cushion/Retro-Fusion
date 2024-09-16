@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const BAT_POSITION: Vector3 = Vector3(-2, 3.5, -7.0)
+const BAT_POSITION: Vector3 = Vector3(-1.25, 3.5, -6)
 
 var current_quaternion: Quaternion = Quaternion.IDENTITY
 var target_quaternion: Quaternion = Quaternion.IDENTITY
