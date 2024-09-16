@@ -1,0 +1,190 @@
+[gd_scene load_steps=8 format=3 uid="uid://c6c0ss21lobt5"]
+
+[ext_resource type="Script" path="res://Scripts/scoreboard.gd" id="1_kr33f"]
+[ext_resource type="FontFile" uid="uid://d0vsn3ye4bc04" path="res://assets/fonts/Nunito-Black.ttf" id="2_a5cqe"]
+[ext_resource type="Script" path="res://Scripts/TableRow.gd" id="3_lsx50"]
+[ext_resource type="FontFile" uid="uid://bd8mhuraudqj7" path="res://assets/fonts/Nunito-ExtraBold.ttf" id="4_qh6th"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r0wlu"]
+bg_color = Color(0.211765, 0.513726, 0.529412, 1)
+border_width_left = 7
+border_width_top = 7
+border_width_right = 7
+border_width_bottom = 7
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_dqosi"]
+color = Color(0.290196, 0.603922, 0.603922, 1)
+grow_begin = 20.0
+grow_end = 20.0
+thickness = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_34t67"]
+color = Color(0.290196, 0.603922, 0.603922, 1)
+grow_end = 25.0
+thickness = 2
+vertical = true
+
+[node name="Scoreboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kr33f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 384
+theme_override_constants/margin_top = 216
+theme_override_constants/margin_right = 384
+theme_override_constants/margin_bottom = 216
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_r0wlu")
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/MarginContainer3"]
+layout_mode = 2
+theme_override_constants/margin_left = 160
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 160
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer3/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.956863, 0.956863, 0.956863, 1)
+theme_override_fonts/normal_font = ExtResource("2_a5cqe")
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "[center]SCOREBOARD[/center]"
+fit_content = true
+
+[node name="Table" type="VBoxContainer" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.9
+theme_override_constants/separation = 0
+
+[node name="HSeparatorTop" type="HSeparator" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxLine_dqosi")
+
+[node name="Headers" type="HBoxContainer" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("3_lsx50")
+UserName = "Username"
+Balls = "Balls"
+Runs = "Runs"
+Fours = "Fours"
+Sixes = "Sixes"
+
+[node name="ColumnUserName" type="Label" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+theme_override_fonts/font = ExtResource("4_qh6th")
+theme_override_font_sizes/font_size = 24
+text = "Username"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator1" type="VSeparator" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+visible = false
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_34t67")
+
+[node name="ColumnBalls" type="Label" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+theme_override_fonts/font = ExtResource("4_qh6th")
+theme_override_font_sizes/font_size = 24
+text = "Balls"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator4" type="VSeparator" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+visible = false
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_34t67")
+
+[node name="ColumnRuns" type="Label" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+theme_override_fonts/font = ExtResource("4_qh6th")
+theme_override_font_sizes/font_size = 24
+text = "Runs"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator2" type="VSeparator" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+visible = false
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_34t67")
+
+[node name="Column4s" type="Label" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+theme_override_fonts/font = ExtResource("4_qh6th")
+theme_override_font_sizes/font_size = 24
+text = "Fours"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSeparator3" type="VSeparator" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+visible = false
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_34t67")
+
+[node name="Column6s" type="Label" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/Headers"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(0.941176, 0.941176, 0.941176, 1)
+theme_override_fonts/font = ExtResource("4_qh6th")
+theme_override_font_sizes/font_size = 24
+text = "Sixes"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparatorBottom" type="HSeparator" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table"]
+layout_mode = 2
+theme_override_constants/separation = 32
+theme_override_styles/separator = SubResource("StyleBoxLine_dqosi")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 4
+
+[node name="DataRows" type="VBoxContainer" parent="MarginContainer/MarginContainer3/MarginContainer2/VBoxContainer/Table/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16

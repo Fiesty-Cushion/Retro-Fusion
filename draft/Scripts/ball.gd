@@ -30,7 +30,6 @@ func _physics_process(delta):
 
 func _integrate_forces(state):
 	if state.get_contact_count() > 0 and can_collide:
-		print("can collide from integrate force")
 
 		var collision_object = state.get_contact_collider_object(0)
 		if collision_object.is_in_group("bat"):
@@ -38,7 +37,6 @@ func _integrate_forces(state):
 
 func handle_bat_collision(state, bat):
 	can_collide = false
-	print("Can't collide now")
 	last_collision_time = Time.get_ticks_msec() / 1000.0
 	
 	var collision_point = state.get_contact_collider_position(0)

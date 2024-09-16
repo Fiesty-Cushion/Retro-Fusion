@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://jli4iawcbp1e"]
+[gd_scene load_steps=17 format=3 uid="uid://jli4iawcbp1e"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
 [ext_resource type="PackedScene" uid="uid://wegvwc22es6v" path="res://Scenes/mobile.tscn" id="2_1hhmc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c5kbvpxoq3sos" path="res://Resources/pitch.jpg" id="5_6hked"]
 [ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://Scenes/stadium.tscn" id="7_tkku6"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
+[ext_resource type="PackedScene" uid="uid://c6c0ss21lobt5" path="res://Scenes/scoreboard.tscn" id="8_k2nxq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
 albedo_texture = ExtResource("5_6hked")
@@ -82,5 +83,9 @@ environment = SubResource("Environment_5a1l2")
 
 [node name="stadium" parent="." instance=ExtResource("7_tkku6")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.33743, 0, -33.3247)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("8_k2nxq")]
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
