@@ -34,6 +34,7 @@ func _integrate_forces(state):
 		var collision_object = state.get_contact_collider_object(0)
 		if collision_object.is_in_group("bat"):
 			handle_bat_collision(state, collision_object)
+			Globals.striked_ball.emit()
 
 func handle_bat_collision(state, bat):
 	can_collide = false

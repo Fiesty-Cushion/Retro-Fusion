@@ -9,6 +9,7 @@ var ball_scene: PackedScene = preload("res://Scenes/ball.tscn")
 func _ready():
 	Socket.start_web_socket()
 	scoreboard.visible = false
+	Globals.striked_ball.connect(Callable(_on_striked_ball))
 
 
 func _input(event):
@@ -35,3 +36,6 @@ func spawn_ball():
 	var ball := ball_scene.instantiate()
 	ball.name = "Ball"
 	add_child(ball)
+	
+func _on_striked_ball():
+	Socket.send_packet("striked_ball".to_ascii_buffer())
