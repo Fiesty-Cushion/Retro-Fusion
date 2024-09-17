@@ -1,7 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://jli4iawcbp1e"]
+[gd_scene load_steps=16 format=3 uid="uid://jli4iawcbp1e"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
-[ext_resource type="PackedScene" uid="uid://wegvwc22es6v" path="res://Scenes/mobile.tscn" id="2_1hhmc"]
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
 [ext_resource type="Texture2D" uid="uid://d4fhb6plwerv6" path="res://Resources/grass_text.jpg" id="4_yt8ld"]
 [ext_resource type="Texture2D" uid="uid://c5kbvpxoq3sos" path="res://Resources/pitch.jpg" id="5_6hked"]
@@ -44,10 +43,6 @@ sky = SubResource("Sky_sd704")
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_kfkr7")
-
-[node name="sword" parent="." instance=ExtResource("2_1hhmc")]
-transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, -1.17599, 5.10629, -6.46525)
-visible = false
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1, 10, 5)
