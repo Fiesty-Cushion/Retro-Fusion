@@ -1,36 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://jli4iawcbp1e"]
+[gd_scene load_steps=13 format=3 uid="uid://jli4iawcbp1e"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
-[ext_resource type="Texture2D" uid="uid://d4fhb6plwerv6" path="res://Resources/grass_text.jpg" id="4_yt8ld"]
-[ext_resource type="Texture2D" uid="uid://c5kbvpxoq3sos" path="res://Resources/pitch.jpg" id="5_6hked"]
 [ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://Scenes/stadium.tscn" id="7_tkku6"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
 [ext_resource type="PackedScene" uid="uid://c6c0ss21lobt5" path="res://Scenes/scoreboard.tscn" id="8_k2nxq"]
 [ext_resource type="PackedScene" uid="uid://bebnhmvjb0tl2" path="res://Scenes/HUD.tscn" id="8_kv4ge"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
-albedo_texture = ExtResource("5_6hked")
-uv1_scale = Vector3(0.2, 0.2, 0.2)
-uv1_triplanar = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_plt6j"]
-material = SubResource("StandardMaterial3D_moygn")
-size = Vector2(12, 60)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q4qh0"]
-albedo_color = Color(0.137255, 0.694118, 0.376471, 1)
-albedo_texture = ExtResource("4_yt8ld")
-uv1_scale = Vector3(0.1, 0.1, 0.1)
-uv1_triplanar = true
-uv2_triplanar = true
-
-[sub_resource type="BoxMesh" id="BoxMesh_o1jwc"]
-material = SubResource("StandardMaterial3D_q4qh0")
-size = Vector3(500, 0.5, 500)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_fdl6s"]
-size = Vector3(500, 0.5, 500)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6yfba"]
 panorama = ExtResource("7_uf0xw")
@@ -42,6 +17,29 @@ sky_material = SubResource("PanoramaSkyMaterial_6yfba")
 background_mode = 2
 sky = SubResource("Sky_sd704")
 
+[sub_resource type="FontFile" id="FontFile_7bmdw"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5g4qc"]
+font = SubResource("FontFile_7bmdw")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_2rnaq"]
+font_size = 70
+
 [node name="main" type="Node3D"]
 script = ExtResource("1_kfkr7")
 
@@ -52,23 +50,8 @@ transform = Transform3D(1, 0, 0, 0, 0.961262, 0.275637, 0, -0.275637, 0.961262, 
 transform = Transform3D(0.711436, -0.0378273, 0.701732, -0.702528, -0.0634226, 0.708825, 0.0176927, -0.99727, -0.0716959, 0, 8, 0)
 shadow_enabled = true
 
-[node name="floor" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26, -30.154)
-visible = false
-mesh = SubResource("PlaneMesh_plt6j")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="floor"]
-visible = false
-mesh = SubResource("BoxMesh_o1jwc")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="floor"]
-shape = SubResource("BoxShape3D_fdl6s")
-
 [node name="bat" parent="." instance=ExtResource("4_kduuw")]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -1.25, 3.5, -7)
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -2, 3.5, -7)
 
 [node name="BallTimer" type="Timer" parent="."]
 wait_time = 4.0
@@ -86,4 +69,24 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.33743, 0, -33.3247)
 
 [node name="Hud" parent="CanvasLayer" instance=ExtResource("8_kv4ge")]
 
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_left = 76.0
+offset_top = 79.0
+offset_right = 331.0
+offset_bottom = 194.0
+text = "Score: x"
+label_settings = SubResource("LabelSettings_5g4qc")
+
+[node name="Run_Remark" type="Label" parent="CanvasLayer"]
+offset_left = 540.0
+offset_top = 49.0
+offset_right = 1282.0
+offset_bottom = 168.0
+label_settings = SubResource("LabelSettings_2rnaq")
+horizontal_alignment = 1
+
+[node name="Remark_Timer" type="Timer" parent="CanvasLayer/Run_Remark"]
+wait_time = 1.5
+
 [connection signal="timeout" from="BallTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Run_Remark/Remark_Timer" to="." method="_on_remark_timer_timeout"]
