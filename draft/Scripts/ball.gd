@@ -3,7 +3,7 @@ extends RigidBody3D
 
 const BALL_VEL_MIN: int = 40
 const BALL_VEL_MAX: int = 45
-const MIN_VELOCITY: float = 30.0  # Minimum velocity to maintain after collision
+const MIN_VELOCITY: float = .0  # Minimum velocity to maintain after collision
 const MAX_VELOCITY: float = 70.0  # Maximum velocity to cap after collision
 const COLLISION_COOLDOWN: float = 10.0  # Cooldown time in seconds
 
@@ -12,6 +12,7 @@ var last_collision_time := 0.0
 
 var camera : Camera3D
 var follow_ball = false
+var bat_hit = false
 
 func _ready():
 	var ball_pos: Vector3 = Vector3(0, 8.7, -50)
@@ -44,16 +45,17 @@ func _physics_process(delta):
 			can_collide = true
 
 	# Ensure the ball always maintains a minimum velocity
-	if linear_velocity.length() < MIN_VELOCITY:
-		linear_velocity = linear_velocity.normalized() * MIN_VELOCITY
+	#if linear_velocity.length() < MIN_VELOCITY:
+		#linear_velocity = linear_velocity.normalized() * MIN_VELOCITY
 
 func _integrate_forces(state):
 	if state.get_contact_count() > 0 and can_collide:
 
 		var collision_object = state.get_contact_collider_object(0)
 		if collision_object.is_in_group("bat"):
-			handle_bat_collision(state, collision_object)
+			#handle_bat_collision(state, collision_object)
 			Globals.striked_ball.emit()
+			bat_hit = true
 
 func handle_bat_collision(state, bat):
 	can_collide = false
@@ -68,7 +70,7 @@ func handle_bat_collision(state, bat):
 	var relative_velocity = linear_velocity - bat_velocity
 	
 	# Calculate the impulse
-	var impulse = -(1.0 + 0.8) * relative_velocity.dot(collision_normal) / (1.0 / mass + 1.0 / bat.mass)
+	var impulse = -(1.5) * relative_velocity.dot(collision_normal) / (1.0 / mass + 1.0 / bat.mass)
 	impulse = max(impulse, 0)  # Ensure positive impulse
 	
 	# Apply the impulse
@@ -95,6 +97,16 @@ func _on_body_entered(body):
 		# Create a timer for the camera to follow the ball trajectory
 		await get_tree().create_timer(3.0).timeout.connect(func() -> void:
 			follow_ball = false
-			camera.position = Vector3(-1, 10, 5)
+			camera.position = Vector3(-1, 10, 7)
+			camera.rotation_degrees.x = -15
 			camera.look_at(get_parent().get_node("bat").global_transform.origin, Vector3.UP)
 		)
+
+func is_hit():
+	return bat_hit
+	
+func get_speed():
+	return linear_velocity.length()
+
+func despawn():
+	queue_free()

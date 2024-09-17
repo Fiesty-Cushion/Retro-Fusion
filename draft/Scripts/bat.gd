@@ -9,7 +9,7 @@ const INTERPOLATION_SPEED: float = 50.0
 
 var previous_position: Vector3
 var current_velocity: Vector3
-const MAX_SWING_SPEED: float = 30.0  # Maximum swing speed in m/s
+const MAX_SWING_SPEED: float = 10.0  # Maximum swing speed in m/s
 
 @export var mass: float = 10.0  # Add mass property for physics calculations
 
@@ -22,7 +22,7 @@ func _on_quaternion_updated(new_quaternion: Quaternion):
 	target_quaternion = new_quaternion
 
 
-# To make the camera follow the bat movement
+ #To make the camera follow the bat movement
 #func _process(delta):
 	#if camera:
 		#var bat_rotation_quat: Quaternion = self.global_transform.basis.get_rotation_quaternion()
