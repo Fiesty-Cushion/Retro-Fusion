@@ -95,6 +95,6 @@ func _on_body_entered(body):
 		# Create a timer for the camera to follow the ball trajectory
 		await get_tree().create_timer(3.0).timeout.connect(func() -> void:
 			follow_ball = false
-			camera.position = Vector3(-1, 10, 5)
-			camera.look_at(get_parent().get_node("bat").global_transform.origin, Vector3.UP)
+			camera.position = Vector3(-1, 10, 7)
+			camera.rotation_degrees = Vector3(-16, 0, 0)
 		)

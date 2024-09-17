@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var mobile: CharacterBody3D = $bat
-@onready var scoreboard: CanvasLayer = $CanvasLayer
+@onready var scoreboard: Control = $CanvasLayer/Scoreboard
 
 var ball_scene: PackedScene = preload("res://Scenes/ball.tscn")
 

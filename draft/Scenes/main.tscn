@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://jli4iawcbp1e"]
+[gd_scene load_steps=17 format=3 uid="uid://jli4iawcbp1e"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://Scenes/stadium.tscn" id="7_tkku6"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
 [ext_resource type="PackedScene" uid="uid://c6c0ss21lobt5" path="res://Scenes/scoreboard.tscn" id="8_k2nxq"]
+[ext_resource type="PackedScene" uid="uid://bebnhmvjb0tl2" path="res://Scenes/HUD.tscn" id="8_kv4ge"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_moygn"]
 albedo_texture = ExtResource("5_6hked")
@@ -45,7 +46,7 @@ sky = SubResource("Sky_sd704")
 script = ExtResource("1_kfkr7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -1, 10, 5)
+transform = Transform3D(1, 0, 0, 0, 0.961262, 0.275637, 0, -0.275637, 0.961262, -1, 10, 7)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711436, -0.0378273, 0.701732, -0.702528, -0.0634226, 0.708825, 0.0176927, -0.99727, -0.0716959, 0, 8, 0)
@@ -82,5 +83,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.33743, 0, -33.3247)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("8_k2nxq")]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("8_kv4ge")]
 
 [connection signal="timeout" from="BallTimer" to="." method="_on_timer_timeout"]
