@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://jli4iawcbp1e"]
+[gd_scene load_steps=13 format=3 uid="uid://jli4iawcbp1e"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
-[ext_resource type="PackedScene" uid="uid://dh1hlmp08hy24" path="res://Scenes/wickets.tscn" id="7_qkt1y"]
 [ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://Scenes/stadium.tscn" id="7_tkku6"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
 [ext_resource type="PackedScene" uid="uid://c6c0ss21lobt5" path="res://Scenes/scoreboard.tscn" id="8_k2nxq"]
@@ -88,9 +87,6 @@ horizontal_alignment = 1
 
 [node name="Remark_Timer" type="Timer" parent="CanvasLayer/Run_Remark"]
 wait_time = 1.5
-
-[node name="wickets" parent="." instance=ExtResource("7_qkt1y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.00016, 2.34012, -3.28188)
 
 [connection signal="timeout" from="BallTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Run_Remark/Remark_Timer" to="." method="_on_remark_timer_timeout"]

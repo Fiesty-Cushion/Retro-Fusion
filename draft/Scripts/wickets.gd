@@ -34,25 +34,30 @@ func unfreeze():
 
 func _on_left_stump_body_entered(body):
 	if(body.is_in_group("ball")):
+		body.despawn()
 		unfreeze()
 		emit_signal("wicket_hit")
 		
 func _on_middle_stump_body_entered(body):
 	if(body.is_in_group("ball")):
+		body.despawn()
 		unfreeze()
 		emit_signal("wicket_hit")
 
 func _on_right_stump_body_entered(body):
 	if(body.is_in_group("ball")):
+		body.despawn()
 		unfreeze()
 		emit_signal("wicket_hit")
 		
 func _on_left_bail_body_entered(body):
 	if(body.is_in_group("ball")):
+		body.despawn()
 		unfreeze()
 		emit_signal("wicket_hit")
 		
 func _on_left_bail_2_body_entered(body):
 	if(body.is_in_group("ball")):
+		body.despawn()
 		unfreeze()
 		emit_signal("wicket_hit")

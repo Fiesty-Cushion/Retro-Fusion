@@ -7,7 +7,6 @@ var ball_states = {}  # Dictionary to store each ball's state (inner and outer c
 @onready var inner_circle = $inner_circle
 @onready var outer_circle = $outer_circle
 
-
 func _ready():
 	pass
 
@@ -32,7 +31,10 @@ func _process(delta):
 						give_runs(0)
 				to_remove = ball  # Store the ball to remove and despawn
 				break  # Exit loop after processing the ball
-	
+			elif (not ball.is_hit()) and ball_state["just_in_pitch"] and (ball_state["in_inner_circle"] or ball_state["in_outer_circle"]):
+				print("Not hit")
+				give_runs(-1)
+				to_remove = ball
 
 	# Remove and despawn the ball after the loop
 	if to_remove != null:
@@ -42,19 +44,7 @@ func _process(delta):
 	# Stop processing if no balls are left
 	if ball_states.is_empty():
 		set_process(false)
-		
-# Called when the ball enters the pitch (running area)
-func _on_running_area_body_entered(body):
-	if body.is_in_group("ball"):
-		# Initialize the state for this ball if not already tracked
-		if body not in ball_states:
-			ball_states[body] = {"just_in_pitch": false,
-								"in_inner_circle": false, 
-								"in_outer_circle": false}
-		
-		# Update the state only if not in the boundary
-		ball_states[body]["just_in_pitch"] = true
-		set_process(true)  # Start processing
+	
 
 # Called when a ball enters the inner circle
 func _on_inner_circle_body_entered(body):
@@ -90,6 +80,22 @@ func _on_outer_pitch_area_body_entered(body):
 				give_runs(6)
 		body.queue_free()
 	pass # Replace with function body.
+
+
+func _on_pitch_body_entered(body):
+	if body.is_in_group("ball"):
+		# Initialize the state for this ball if not already tracked
+		if body not in ball_states:
+			ball_states[body] = {"just_in_pitch": false,
+								"in_inner_circle": false, 
+								"in_outer_circle": false}
+		
+		# Update the state only if not in the boundary
+		ball_states[body]["just_in_pitch"] = true
+		set_process(true)  # Start processing
+	pass # Replace with function body.
 	
+		
 func give_runs(runs):
 	emit_signal("score_changed", runs)
+

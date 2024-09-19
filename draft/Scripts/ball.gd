@@ -122,6 +122,7 @@ func _on_timer_timeout():
 	queue_free()
 
 func _on_body_entered(body):
+	print(body.name)
 	if body.is_in_group("bat"):
 		follow_ball = true
 		
