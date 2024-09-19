@@ -1,7 +1,5 @@
 extends Node3D
 
-signal score_changed(amount)
-
 var ball_states = {}  # Dictionary to store each ball's state (inner and outer circle status)
 
 @onready var inner_circle = $inner_circle
@@ -97,5 +95,5 @@ func _on_pitch_body_entered(body):
 	
 		
 func give_runs(runs):
-	emit_signal("score_changed", runs)
+	Globals.score_changed.emit(runs)
 

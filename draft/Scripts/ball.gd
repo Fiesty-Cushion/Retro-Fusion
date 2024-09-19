@@ -68,16 +68,7 @@ func _process(delta):
 		
 		# Optionally, make the camera look at the bat
 		camera.look_at(get_parent().get_node("bat").global_transform.origin, Vector3.UP)
-		
 
-func _physics_process(delta):
-	if not can_collide:
-		if Time.get_ticks_msec() / 1000.0 - last_collision_time > COLLISION_COOLDOWN:
-			can_collide = true
-
-	# Ensure the ball always maintains a minimum velocity
-	#if linear_velocity.length() < MIN_VELOCITY:
-		#linear_velocity = linear_velocity.normalized() * MIN_VELOCITY
 
 func _integrate_forces(state):
 	if state.get_contact_count() > 0 and can_collide:
@@ -116,8 +107,7 @@ func handle_bat_collision(state, bat):
 	
 	# Add a slight upward force to prevent horizontal sliding
 	apply_central_force(Vector3.UP * 9.8 * mass * 0.5)
-
-
+	
 func _on_timer_timeout():
 	queue_free()
 

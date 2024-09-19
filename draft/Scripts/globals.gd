@@ -7,3 +7,4 @@ var batShouldReset := false
 var REFERENCE_QUATER = Quaternion(0, 0, sqrt(2) / 2, sqrt(2) / 2)
 
 signal striked_ball
+signal score_changed(amount: int)

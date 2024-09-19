@@ -18,7 +18,8 @@ func _ready():
 	Socket.start_web_socket()
 	scoreboard.visible = false
 	Globals.striked_ball.connect(Callable(_on_striked_ball))
-	stadium.connect("score_changed", Callable(self, "_on_score_changed"))
+	Globals.score_changed.connect(Callable(_on_score_changed))
+	#stadium.connect("score_changed", Callable(self, "_on_score_changed"))
 	#wickets.connect("wicket_hit", Callable(self, "_on_wicket_hit"))
 
 func _input(event):
