@@ -7,7 +7,6 @@ var ball_scene: PackedScene = preload("res://Scenes/ball.tscn")
 @onready var stadium = $stadium
 #@onready var wickets = $wickets
 
-@onready var score_label = $CanvasLayer/Score
 @onready var run_remark = $CanvasLayer/Run_Remark
 @onready var remark_timer = $CanvasLayer/Run_Remark/Remark_Timer
 
@@ -67,7 +66,6 @@ func _on_score_changed(amount):
 		give_remark("Aura -1000")
 	elif amount == -1:
 		give_remark("Miss!")
-	score_label.text = "Score : " + str(score)
 
 func give_remark(text):
 	run_remark.text = text

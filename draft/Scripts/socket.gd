@@ -30,6 +30,7 @@ func _on_client_connected(id):
 	if query_params.has("username"):
 		var username: String = query_params["username"]
 		_add_connected_user(id, username)
+		Globals.user_connected.emit(username)
 	else:
 		print("Invalid connection url. Include username in query parameter")
 
@@ -80,3 +81,4 @@ func _add_connected_user(id: int, username: String):
 	connected_users[id] = username
 	send_message_to_userid(id, "SocketId:" + String.num_int64(id))
 	print("Client connected with username: %s, id: %d" % [username, id])
+	
