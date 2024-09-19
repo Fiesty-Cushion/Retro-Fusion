@@ -5,6 +5,7 @@ var ball_scene: PackedScene = preload("res://Scenes/ball.tscn")
 @onready var mobile: CharacterBody3D = $bat
 @onready var scoreboard = $CanvasLayer/Scoreboard
 @onready var stadium = $stadium
+@onready var wickets = $wickets
 
 @onready var score_label = $CanvasLayer/Score
 @onready var run_remark = $CanvasLayer/Run_Remark
@@ -18,6 +19,7 @@ func _ready():
 	scoreboard.visible = false
 	Globals.striked_ball.connect(Callable(_on_striked_ball))
 	stadium.connect("score_changed", Callable(self, "_on_score_changed"))
+	wickets.connect("wicket_hit", Callable(self, "_on_wicket_hit"))
 
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
@@ -46,23 +48,28 @@ func spawn_ball():
 	
 func _on_striked_ball():
 	Socket.send_packet("striked_ball".to_ascii_buffer())
+	
+func _on_wicket_hit():
+	give_remark("Wicket!")
 
 func _on_score_changed(amount):
 	score += amount
 	if amount == 1 :
-		run_remark.text = "One Run!"
+		give_remark("One Run!")
 	elif amount == 2:
-		run_remark.text = "Two Runs!"
+		give_remark("Two Runs!")
 	elif amount == 4:
-		run_remark.text = "Chaukaaaaa!"	
+		give_remark("Chaukaaaaa!")
 	elif amount == 6:
-		run_remark.text = "Chakkaaaaa!"
+		give_remark("Chakkaaaaa!")
 	elif amount == 0:
-		run_remark.text = "Aura -1000"
-	remark_timer.start()
+		give_remark("Aura -1000")
 	score_label.text = "Score : " + str(score)
-	
 
+func give_remark(text):
+	run_remark.text = text
+	remark_timer.start()
+	
 
 func _on_remark_timer_timeout():
 	run_remark.text = ""

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://Scenes/stadium.tscn" id="7_tkku6"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
 [ext_resource type="PackedScene" uid="uid://c6c0ss21lobt5" path="res://Scenes/scoreboard.tscn" id="8_k2nxq"]
-[ext_resource type="PackedScene" uid="uid://bebnhmvjb0tl2" path="res://Scenes/HUD.tscn" id="8_kv4ge"]
+[ext_resource type="PackedScene" path="res://Scenes/HUD.tscn" id="8_kv4ge"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6yfba"]
 panorama = ExtResource("7_uf0xw")
@@ -62,7 +62,7 @@ autostart = true
 environment = SubResource("Environment_5a1l2")
 
 [node name="stadium" parent="." instance=ExtResource("7_tkku6")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.33743, 0, -33.3247)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.337, 0, -33.325)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -90,7 +90,7 @@ horizontal_alignment = 1
 wait_time = 1.5
 
 [node name="wickets" parent="." instance=ExtResource("7_qkt1y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 2, -3.277)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.00016, 2.34012, -3.28188)
 
 [connection signal="timeout" from="BallTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Run_Remark/Remark_Timer" to="." method="_on_remark_timer_timeout"]
