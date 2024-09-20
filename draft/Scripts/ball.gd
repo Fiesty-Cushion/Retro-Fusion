@@ -18,8 +18,8 @@ enum BowlType { STRAIGHT, LEG_SPIN, OFF_SPIN, SEAM, SWING }
 var bowl_type : BowlType
 var wickets_position :Vector3
 const SPIN_FORCE := [2.0, 4.0, 6.0]
-const SWING_FORCE: float =20.0
-const SEAM_VARIATION: float = 20.0
+const SWING_FORCE: float =10.0
+const SEAM_VARIATION: float = 10.0
 
 
 func _ready():
