@@ -18,8 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 Globals="*res://Scripts/globals.gd"
-Socket="*res://Scripts/net/socket.gd"
+Ip="*res://Scripts/net/ip.gd"
 Udp="*res://Scripts/net/udp.gd"
+Socket="*res://Scripts/net/socket.gd"
 
 [display]
 

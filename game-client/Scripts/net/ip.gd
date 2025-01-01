@@ -1,7 +1,7 @@
 extends Node
 
 # Returns a list of broadcast addresses for all local network interfaces
-func get_broadcast_addresses() -> Array[String]:
+static func get_broadcast_addresses() -> Array[String]:
 	var addresses: Array[String] = []
 	var ip_addresses := IP.get_local_addresses()
 
@@ -26,13 +26,13 @@ func get_broadcast_addresses() -> Array[String]:
 	return addresses
 
 # Retrieves network information (IP and subnet mask) for a given IP address
-func get_network_info(target_ip: String) -> Dictionary:
+static func get_network_info(target_ip: String) -> Dictionary:
 	if OS.has_feature("windows"):
 		return _get_windows_network_info(target_ip)
 	else:
 		return _get_unix_network_info(target_ip)
 
-func _get_windows_network_info(target_ip: String) -> Dictionary:
+static func _get_windows_network_info(target_ip: String) -> Dictionary:
 	var output : Array[String] = []
 	OS.execute("ipconfig", [], output)
 	var lines := output[0].split("\n")
@@ -55,7 +55,7 @@ func _get_windows_network_info(target_ip: String) -> Dictionary:
 	
 	return {}
 
-func _get_unix_network_info(target_ip: String) -> Dictionary:
+static func _get_unix_network_info(target_ip: String) -> Dictionary:
 	var output : Array[String] = []
 	OS.execute("ip", ["addr"], output)
 	if output[0].is_empty():
@@ -84,7 +84,7 @@ func _get_unix_network_info(target_ip: String) -> Dictionary:
 	return {}
 	
 # Converts CIDR prefix length to subnet mask format
-func prefix_to_netmask(prefix_length: int) -> String:
+static func prefix_to_netmask(prefix_length: int) -> String:
 	var mask := ""
 	var full_octets := prefix_length / 8
 	var remaining_bits := prefix_length % 8
@@ -105,7 +105,7 @@ func prefix_to_netmask(prefix_length: int) -> String:
 			
 	return mask
 
-func calculate_broadcast(ip: String, netmask: String) -> String:
+static func calculate_broadcast(ip: String, netmask: String) -> String:
 	var ip_parts := ip.split(".")
 	var mask_parts := netmask.split(".")
 	

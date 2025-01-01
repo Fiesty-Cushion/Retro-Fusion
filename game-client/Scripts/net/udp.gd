@@ -8,9 +8,6 @@ var _broadcasting_timer: float = 0
 var broadcast_addresses : Array[String]
 var msg_buff : PackedByteArray
 
-const ip_script = preload("res://Scripts/net/ip.gd")
-var ip_instance = ip_script.new() 
-
 func _init():
 	udp_network = PacketPeerUDP.new()
 	udp_network.set_broadcast_enabled(true)
@@ -18,7 +15,7 @@ func _init():
 	if err != OK:
 		printerr("Failed to bind UDP socket: ", err)
 			
-	broadcast_addresses= ip_instance.get_broadcast_addresses()
+	broadcast_addresses = Ip.get_broadcast_addresses()
 	
 	# Create identification message in format: username-OS_nameOS_version;;port
 	var _name := _get_username() + "-" + OS.get_distribution_name() + OS.get_version()
