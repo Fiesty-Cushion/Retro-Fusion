@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SensorStream.MAUI.MainPage"
+             xmlns:viewmodel="clr-namespace:SensorStream.MAUI.ViewModels"
+             xmlns:model="clr-namespace:SensorStream.MAUI.Models"
+             x:DataType="viewmodel:MainViewModel">
+    <ScrollView>
+        <VerticalStackLayout
+         Padding="30,0"
+         Spacing="25">
+            <Image
+             Source="dotnet_bot.png"
+             HeightRequest="185"
+             Aspect="AspectFit"
+             SemanticProperties.Description="dot net bot in a race car number eight" />
+
+            <Label
+             Text="Welcome to &#10;Sensor Stream"
+             Style="{StaticResource Headline}"
+             SemanticProperties.HeadingLevel="Level1" />
+
+            <Entry
+             Placeholder="Enter username"
+             Text="{Binding Username}"
+             ReturnType="Done"
+             IsEnabled="{Binding IsSearchStopped}"/>
+            <Button
+             Text="Search for host"
+             SemanticProperties.Hint="Listens to UDP Broadcasts for Host information"
+             Command="{Binding SearchHostCommand}" 
+             IsVisible="{Binding IsSearchStopped}"/>
+
+            <Button
+             Text="Stop search"
+             SemanticProperties.Hint="Stops listening to UDP Broadcasts for Host information"
+             Command="{Binding StopSearchCommand}"
+             IsVisible="{Binding IsSearchRunning}" />
+
+            <CollectionView 
+                ItemsSource="{Binding BroadcastMessages}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="{x:Type model:BroadcastMessageModel}">
+                        <Frame BackgroundColor="Transparent" Margin="2,1,2,15">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:MainViewModel}}, Path=SelectServerCommand}"
+                                    CommandParameter="{Binding .}"/>
+                            </Frame.GestureRecognizers>
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Name}" />
+                                <Label Text="{Binding IP}" />
+                                <Label Text="{Binding WS_Port}" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
+

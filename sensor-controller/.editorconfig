@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# IDE1006: Naming Styles
+dotnet_diagnostic.IDE1006.severity = none
+
+# IDE0300: Simplify collection initialization
+dotnet_style_prefer_collection_expression = never
+
+# IDE0290: Use primary constructor
+csharp_style_prefer_primary_constructors = false

@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://jli4iawcbp1e"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_kfkr7"]
+[ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://Scenes/bat.tscn" id="4_kduuw"]
+[ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://Scenes/stadium.tscn" id="7_tkku6"]
+[ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://Resources/AllSkyFree_Sky_EpicBlueSunset_Equirect.png" id="7_uf0xw"]
+[ext_resource type="PackedScene" uid="uid://c6c0ss21lobt5" path="res://Scenes/scoreboard.tscn" id="8_k2nxq"]
+[ext_resource type="PackedScene" uid="uid://bebnhmvjb0tl2" path="res://Scenes/HUD.tscn" id="8_kv4ge"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6yfba"]
+panorama = ExtResource("7_uf0xw")
+
+[sub_resource type="Sky" id="Sky_sd704"]
+sky_material = SubResource("PanoramaSkyMaterial_6yfba")
+
+[sub_resource type="Environment" id="Environment_5a1l2"]
+background_mode = 2
+sky = SubResource("Sky_sd704")
+
+[sub_resource type="LabelSettings" id="LabelSettings_2rnaq"]
+font_size = 70
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cp8yi"]
+size = Vector3(500, 190, 500)
+
+[node name="main" type="Node3D"]
+script = ExtResource("1_kfkr7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.961262, 0.275637, 0, -0.275637, 0.961262, -1, 10, 7)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.711436, -0.0378273, 0.701732, -0.702528, -0.0634226, 0.708825, 0.0176927, -0.99727, -0.0716959, 0, 8, 0)
+shadow_enabled = true
+
+[node name="bat" parent="." instance=ExtResource("4_kduuw")]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -2, 3.5, -7)
+
+[node name="BallTimer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5a1l2")
+
+[node name="stadium" parent="." instance=ExtResource("7_tkku6")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.337, 0, -33.325)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("8_k2nxq")]
+
+[node name="Hud" parent="CanvasLayer" instance=ExtResource("8_kv4ge")]
+
+[node name="Run_Remark" type="Label" parent="CanvasLayer"]
+offset_left = 540.0
+offset_top = 49.0
+offset_right = 1282.0
+offset_bottom = 168.0
+label_settings = SubResource("LabelSettings_2rnaq")
+horizontal_alignment = 1
+
+[node name="Remark_Timer" type="Timer" parent="CanvasLayer/Run_Remark"]
+wait_time = 1.5
+
+[node name="ground" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -95, 0)
+shape = SubResource("BoxShape3D_cp8yi")
+
+[connection signal="timeout" from="BallTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Run_Remark/Remark_Timer" to="." method="_on_remark_timer_timeout"]

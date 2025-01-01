@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SensorStream.MAUI.LobbyPage"
+             xmlns:viewmodel="clr-namespace:SensorStream.MAUI.ViewModels"
+             x:DataType="viewmodel:LobbyViewModel"
+             Title="Lobby">
+    <Grid RowDefinitions="50,3*,2*"
+           Margin="10,10,10,10">
+        <Label
+            Text="Lobby Page"
+            FontSize="Large"
+            FontAttributes="Bold"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Grid.Row="0"/>
+        <!-- Host Information -->
+        <VerticalStackLayout
+        Grid.Row="1"
+        Spacing="40">
+            <Frame
+            Padding="15"
+            CornerRadius="10"
+            HasShadow="True"
+                BackgroundColor="Transparent">
+                <VerticalStackLayout Spacing="5">
+                    <Label 
+                        Text="Server"
+                        FontSize="Default"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Center" />
+                    <BoxView
+                        HeightRequest="2"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center" />
+
+                    <HorizontalStackLayout Spacing="5">
+                        <Label 
+                        Text="Name:"
+                        FontAttributes="Bold" />
+                        <Label 
+                        Text="{Binding LobbyParams.Server.Name}" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="5">
+                        <Label 
+                        Text="IP:"
+                        FontAttributes="Bold" />
+                        <Label 
+                        Text="{Binding LobbyParams.Server.IP}" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout Spacing="5">
+                        <Label 
+                         Text="Socket Port:"
+                         FontAttributes="Bold" />
+                        <Label 
+                         Text="{Binding LobbyParams.Server.WS_Port}" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sensor Data Card -->
+            <Frame
+            Padding="15"
+            CornerRadius="10"
+            HasShadow="True"
+            BackgroundColor="Transparent">
+                <VerticalStackLayout Spacing="5">
+                    <Label 
+                    Text="Sensor Data"
+                    FontSize="Default"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Center" />
+                    <BoxView
+                    HeightRequest="2"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center" />
+
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <!-- Accelerometer Data -->
+                        <Label 
+                        Text="Accelerometer:"
+                        FontAttributes="Bold"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+                        <Label 
+                        Text="{Binding AccelerometerData}"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+
+                        <!-- Gyroscope Data -->
+                        <Label 
+                        Text="Gyroscope:"
+                        FontAttributes="Bold"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+                        <Label 
+                        Text="{Binding GyroscopeData}"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+
+                        <!-- Orientation Data -->
+                        <Label 
+                        Text="Orientation:"
+                        FontAttributes="Bold"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+                        <Label 
+                        Text="{Binding OrientationData}"
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Start" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+        </VerticalStackLayout>
+
+        <!-- Send Button -->
+        <VerticalStackLayout
+            Grid.Row="2">
+            <!-- Button for starting the sensor -->
+            <Button 
+        Text="Start" 
+        Command="{Binding StartCommand}"
+        FontSize="Medium"
+        WidthRequest="150" 
+        HeightRequest="150"
+        CornerRadius="150"
+        VerticalOptions="Center"
+        HorizontalOptions="Center" 
+        IsVisible="{Binding ShowStartButton}"/>
+
+            <!-- Button for showing "Sending..." -->
+            <Button 
+        Text="Sending..." 
+        Command="{Binding StartCommand}"
+        FontSize="Default"
+        WidthRequest="150" 
+        HeightRequest="150"
+        CornerRadius="150"
+        VerticalOptions="Center"
+        HorizontalOptions="Center" 
+        IsVisible="{Binding ShowSendingButton}"
+        IsEnabled="False"/>
+
+            <!-- Button for "Connecting..." -->
+            <Button 
+        Text="Connecting.." 
+        FontSize="Default"
+        WidthRequest="150" 
+        HeightRequest="150"
+        CornerRadius="150"
+        VerticalOptions="Center"
+        HorizontalOptions="Center" 
+        IsVisible="{Binding ShowConnectingButton}"
+        IsEnabled="False"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>
