@@ -8,5 +8,6 @@ var current_user := "Anonymous"
 var REFERENCE_QUATER = Quaternion(0, 0, sqrt(2) / 2, sqrt(2) / 2)
 
 signal striked_ball
+signal ball_despawned
 signal score_changed(amount: int)
 signal user_connected(username: String)
