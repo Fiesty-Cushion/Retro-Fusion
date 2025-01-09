@@ -11,16 +11,16 @@ config_version=5
 [application]
 
 config/name="Retro Fusion"
-run/main_scene="res://Scenes/main_menu.tscn"
+run/main_scene="res://scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://Scripts/globals.gd"
-Ip="*res://Scripts/net/ip.gd"
-Udp="*res://Scripts/net/udp.gd"
-Socket="*res://Scripts/net/socket.gd"
+Globals="*res://scripts/globals.gd"
+Ip="*res://scripts/net/ip.gd"
+Udp="*res://scripts/net/udp.gd"
+Socket="*res://scripts/net/socket.gd"
 
 [display]
 

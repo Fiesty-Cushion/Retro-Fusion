@@ -3,8 +3,7 @@ extends Control
 @onready var click_audio = $ClickAudio
 @onready var hover_audio = $HoverAudio
 
-var game_menu_scene = "res://Scenes/game_menu.tscn"
-
+var game_menu_scene = "res://scenes/game_menu.tscn"
 
 func _on_run_button_pressed():
 	click_audio.play()
