@@ -43,7 +43,8 @@ func _physics_process(delta):
 	current_velocity = current_velocity.limit_length(MAX_SWING_SPEED)
 	previous_position = global_position
 
-	var collision = move_and_collide(Vector3.ZERO)
+	var collision = move_and_slide()
+	#var collision = move_and_collide(Vector3.ZERO)
 	if collision:
 		Globals.batShouldReset = true
 

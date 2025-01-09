@@ -36,7 +36,7 @@ shadow_enabled = true
 [node name="bat" parent="." instance=ExtResource("4_kduuw")]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, -2, 3.5, -7)
 
-[node name="BallTimer" type="Timer" parent="."]
+[node name="BallSpawnTimer" type="Timer" parent="."]
 wait_time = 4.0
 autostart = true
 
@@ -69,5 +69,5 @@ wait_time = 1.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -95, 0)
 shape = SubResource("BoxShape3D_cp8yi")
 
-[connection signal="timeout" from="BallTimer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="BallSpawnTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="CanvasLayer/Run_Remark/Remark_Timer" to="." method="_on_remark_timer_timeout"]

@@ -2,24 +2,23 @@ extends RigidBody3D
 
 const BALL_VEL_MIN: int = 40
 const BALL_VEL_MAX: int = 45
-const MIN_VELOCITY: float = .0  # Minimum velocity to maintain after collision
-const MAX_VELOCITY: float = 70.0  # Maximum velocity to cap after collision
-const COLLISION_COOLDOWN: float = 10.0  # Cooldown time in seconds
+const MIN_VELOCITY: float = .0 # Minimum velocity to maintain after collision
+const MAX_VELOCITY: float = 70.0 # Maximum velocity to cap after collision
+const COLLISION_COOLDOWN: float = 10.0 # Cooldown time in seconds
 
 var can_collide := true
 var last_collision_time := 0.0
 
-var camera : Camera3D
+var camera: Camera3D
 var follow_ball = false
 var bat_hit = false
 
-enum BowlType { STRAIGHT, LEG_SPIN, OFF_SPIN, SEAM, SWING }
-var bowl_type : BowlType
-var wickets_position :Vector3
+enum BowlType {STRAIGHT, LEG_SPIN, OFF_SPIN, SEAM, SWING}
+var bowl_type: BowlType
+var wickets_position: Vector3
 const SPIN_FORCE := [2.0, 4.0, 6.0]
-const SWING_FORCE: float =10.0
+const SWING_FORCE: float = 10.0
 const SEAM_VARIATION: float = 10.0
-
 
 func _ready():
 	contact_monitor = true
@@ -44,17 +43,17 @@ func setup_bowl():
 		BowlType.OFF_SPIN:
 			apply_torque(Vector3(0, 0, -SPIN_FORCE[randi() % SPIN_FORCE.size()]))
 		BowlType.SWING:
-			apply_central_force(Vector3(randf_range(-SWING_FORCE, SWING_FORCE),0,randf_range(-SWING_FORCE, SWING_FORCE)))
+			apply_central_force(Vector3(randf_range(-SWING_FORCE, SWING_FORCE), 0, randf_range(-SWING_FORCE, SWING_FORCE)))
 		BowlType.SEAM:
 			# Apply spin after a delay
 			get_tree().create_timer(0.5).connect("timeout", Callable(self, "apply_seam"))
 			
 func apply_seam():
 	linear_velocity = linear_velocity * 1.3
-	apply_torque(Vector3(0,0,randf_range(-SEAM_VARIATION, SEAM_VARIATION)))	
+	apply_torque(Vector3(0, 0, randf_range(-SEAM_VARIATION, SEAM_VARIATION)))
 
 
-func _process(delta):
+func _process(_delta):
 	if (not bat_hit) && linear_velocity.length() < 30.0:
 		linear_velocity = linear_velocity.normalized() * 30.0
 		
@@ -76,7 +75,7 @@ func _integrate_forces(state):
 			#handle_bat_collision(state, collision_object)
 			Globals.striked_ball.emit()
 			bat_hit = true
-			print("Bat Hit! Bat Hit! Bat Hit!")
+			#print("Bat Hit! Bat Hit! Bat Hit!")
 
 func handle_bat_collision(state, bat):
 	can_collide = false
@@ -92,7 +91,7 @@ func handle_bat_collision(state, bat):
 	
 	# Calculate the impulse
 	var impulse = -(1.5) * relative_velocity.dot(collision_normal) / (1.0 / mass + 1.0 / bat.mass)
-	impulse = max(impulse, 0)  # Ensure positive impulse
+	impulse = max(impulse, 0) # Ensure positive impulse
 	
 	# Apply the impulse
 	var impulse_vector = collision_normal * impulse
@@ -108,15 +107,16 @@ func handle_bat_collision(state, bat):
 	apply_central_force(Vector3.UP * 9.8 * mass * 0.5)
 	
 func _on_timer_timeout():
+	Globals.ball_despawned.emit()
 	queue_free()
 
 func _on_body_entered(body):
-	print(body.name)
+	#print(body.name)
 	if body.is_in_group("bat"):
 		follow_ball = true
 		
-		# Create a timer for the camera to follow the ball trajectory
-		await get_tree().create_timer(3.0).timeout.connect(func() -> void:
+		# Create a timer for the camera to follow the ball trajectory		
+		get_tree().create_timer(3.0).timeout.connect(func() -> void:
 			follow_ball = false
 			camera.position = Vector3(-1, 10, 7)
 			camera.rotation_degrees = Vector3(-16, 0, 0)
@@ -127,6 +127,3 @@ func is_hit():
 	
 func get_speed():
 	return linear_velocity.length()
-
-func despawn():
-	queue_free()
