@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://games/cricket/scripts/main.gd" id="1_kfkr7"]
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://games/cricket/scenes/bat.tscn" id="4_kduuw"]
 [ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://games/cricket/scenes/stadium.tscn" id="7_tkku6"]
-[ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://games/common/assets/images/AllSkyFree_Sky_EpicBlsky_background.png" id="7_uf0xw"]
+[ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://games/cricket/assets/AllSkyFree_Sky_EpicBlsky_background.png" id="7_uf0xw"]
 [ext_resource type="PackedScene" uid="uid://c6c0ss21lobt5" path="res://games/cricket/scenes/scoreboard.tscn" id="8_k2nxq"]
 [ext_resource type="PackedScene" uid="uid://bebnhmvjb0tl2" path="res://games/cricket/scenes/HUD.tscn" id="8_kv4ge"]
 
