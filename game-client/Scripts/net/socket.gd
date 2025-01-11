@@ -5,6 +5,7 @@ var socket := WebSocketMultiplayerPeer.new()
 var connected_users: Dictionary = {}
 
 signal quaternion_updated(new_quaternion: Quaternion)
+signal accelerometer_updated(new_value: Vector3)
 
 
 func start_web_socket():
@@ -61,7 +62,10 @@ func _handle_received_data(json: JSON):
 	var new_quater: Quaternion = Quaternion(
 		-json.data.ori.x, -json.data.ori.z, json.data.ori.y, -json.data.ori.w
 	)
+	var new_data = Vector3(json.data.acc.x, json.data.acc.y, json.data.acc.z)
+	
 	quaternion_updated.emit(new_quater)
+	accelerometer_updated.emit(new_data)
 
 
 func _parse_query_params(uri: String) -> Dictionary:

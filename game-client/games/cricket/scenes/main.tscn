@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://jli4iawcbp1e"]
+[gd_scene load_steps=13 format=3 uid="uid://jli4iawcbp1e"]
 
 [ext_resource type="Script" path="res://games/cricket/scripts/main.gd" id="1_kfkr7"]
+[ext_resource type="Script" path="res://games/cricket/scripts/camera.gd" id="2_gkipm"]
 [ext_resource type="PackedScene" uid="uid://chsic321k6csl" path="res://games/cricket/scenes/bat.tscn" id="4_kduuw"]
 [ext_resource type="PackedScene" uid="uid://bkoijual6etbm" path="res://games/cricket/scenes/stadium.tscn" id="7_tkku6"]
 [ext_resource type="Texture2D" uid="uid://ckaox08u1tbv7" path="res://games/cricket/assets/AllSkyFree_Sky_EpicBlsky_background.png" id="7_uf0xw"]
@@ -28,6 +29,7 @@ script = ExtResource("1_kfkr7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.961262, 0.275637, 0, -0.275637, 0.961262, -1, 10, 7)
+script = ExtResource("2_gkipm")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.711436, -0.0378273, 0.701732, -0.702528, -0.0634226, 0.708825, 0.0176927, -0.99727, -0.0716959, 0, 8, 0)
