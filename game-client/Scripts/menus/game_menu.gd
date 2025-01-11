@@ -4,11 +4,11 @@ extends Control
 @onready var home_button: TextureButton = $MarginContainer4/HBoxContainer/HomeButton
 
 func _ready():
-	GameManager.register_game("cricket", "res://games/cricket/scenes/main.tscn")
-	GameManager.register_game("tt", "")
-	GameManager.register_game("tennis", "")
-	GameManager.register_game("baseball", "")
-	GameManager.register_game("golf", "")
+	GameManager.register_game("cricket", "res://games/cricket/scenes/main.tscn", 1)
+	GameManager.register_game("tt", "",2)
+	GameManager.register_game("tennis", "",1)
+	GameManager.register_game("baseball", "",1)
+	GameManager.register_game("golf", "", 10)
 	
 	for name in GameManager.games.keys():
 		var b := _create_button(name)
@@ -40,5 +40,5 @@ func _create_button(name: String) -> TextureButton:
 	button.texture_disabled = load("res://assets/images/buttons/" + name + "_disabled.png")
 	return button
 	
-func _on_game_started(game_name: String):
+func _on_game_started(_game_name: String):
 	hide()

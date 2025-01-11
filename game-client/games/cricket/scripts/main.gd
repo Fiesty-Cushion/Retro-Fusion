@@ -14,7 +14,6 @@ var ball_scene: PackedScene = preload("res://games/cricket/scenes/ball.tscn")
 var score = 0
 
 func _ready():
-	Socket.start_web_socket()
 	scoreboard.visible = false
 	Globals.striked_ball.connect(Callable(_on_striked_ball))
 	Globals.score_changed.connect(Callable(_on_score_changed))

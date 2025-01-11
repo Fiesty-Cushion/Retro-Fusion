@@ -21,10 +21,10 @@ func _ready():
 	Socket.accelerometer_updated.connect(_on_accelerometer_updated)
 	#previous_position = global_position
 
-func _on_quaternion_updated(new_quaternion: Quaternion):
+func _on_quaternion_updated(new_quaternion: Quaternion, _sender_id: int):
 	target_quaternion = new_quaternion
 	
-func _on_accelerometer_updated(new_value):
+func _on_accelerometer_updated(new_value : Vector3, _sender_id: int):
 	acceleration = new_value
 
 func _physics_process(delta):
