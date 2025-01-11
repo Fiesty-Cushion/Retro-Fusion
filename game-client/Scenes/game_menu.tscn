@@ -1,6 +1,6 @@
-[gd_scene load_steps=31 format=3 uid="uid://difexgp18322b"]
+[gd_scene load_steps=11 format=3 uid="uid://difexgp18322b"]
 
-[ext_resource type="Script" path="res://scripts/game_menu.gd" id="1_txlyx"]
+[ext_resource type="Script" path="res://scripts/menus/game_menu.gd" id="1_txlyx"]
 [ext_resource type="Shader" path="res://assets/shaders/background.gdshader" id="2_452g4"]
 [ext_resource type="Texture2D" uid="uid://1ofrufqr06p1" path="res://assets/images/main_menu/background.png" id="3_prhte"]
 [ext_resource type="Texture2D" uid="uid://c0lh3mga4h1iv" path="res://assets/images/buttons/home_normal.png" id="4_ul2jh"]
@@ -8,26 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://cbuk0nmhs2r3c" path="res://assets/images/buttons/home_hover.png" id="6_sp3nv"]
 [ext_resource type="Texture2D" uid="uid://dq3c76a5ybltw" path="res://assets/images/buttons/home_disabled.png" id="7_7nohr"]
 [ext_resource type="FontFile" uid="uid://d0vsn3ye4bc04" path="res://assets/fonts/Nunito-Black.ttf" id="8_73x5a"]
-[ext_resource type="Texture2D" uid="uid://bt4a2niii4mtu" path="res://assets/images/buttons/cricket_normal.png" id="9_6x12q"]
-[ext_resource type="Texture2D" uid="uid://2fyapvsdj480" path="res://assets/images/buttons/cricket_pressed.png" id="10_5ralp"]
-[ext_resource type="Texture2D" uid="uid://2bcekew2xavd" path="res://assets/images/buttons/cricket_hover.png" id="11_exw85"]
-[ext_resource type="Texture2D" uid="uid://drr0blob58f2l" path="res://assets/images/buttons/cricket_disabled.png" id="12_raduh"]
-[ext_resource type="Texture2D" uid="uid://dm1wlq2s6ieqd" path="res://assets/images/buttons/tt_normal.png" id="13_kfvd0"]
-[ext_resource type="Texture2D" uid="uid://dmu70cdu27ccs" path="res://assets/images/buttons/tt_pressed.png" id="14_eo87d"]
-[ext_resource type="Texture2D" uid="uid://j88cwo0c4f5l" path="res://assets/images/buttons/tt_hover.png" id="15_kfcyf"]
-[ext_resource type="Texture2D" uid="uid://p55g5obj6tg8" path="res://assets/images/buttons/tt_disabled.png" id="16_pbfll"]
-[ext_resource type="Texture2D" uid="uid://cewgroj383yw1" path="res://assets/images/buttons/tennis_normal.png" id="17_i2pvc"]
-[ext_resource type="Texture2D" uid="uid://ccjvx1hdqvakb" path="res://assets/images/buttons/tennis_pressed.png" id="18_u00ak"]
-[ext_resource type="Texture2D" uid="uid://ouicftev5t86" path="res://assets/images/buttons/tennis_hover.png" id="19_qc6qh"]
-[ext_resource type="Texture2D" uid="uid://b26mqf2tcmv6s" path="res://assets/images/buttons/tennis_disabled.png" id="20_4lqtp"]
-[ext_resource type="Texture2D" uid="uid://csc6e2ni0k8ai" path="res://assets/images/buttons/baseball_normal.png" id="21_6v3fu"]
-[ext_resource type="Texture2D" uid="uid://bebys28nlr45u" path="res://assets/images/buttons/baseball_pressed.png" id="22_fnb4s"]
-[ext_resource type="Texture2D" uid="uid://cdr2xccvpakw3" path="res://assets/images/buttons/baseball_hover.png" id="23_eeblu"]
-[ext_resource type="Texture2D" uid="uid://ca1n4ir17klk4" path="res://assets/images/buttons/baseball_disabled.png" id="24_1yu1u"]
-[ext_resource type="Texture2D" uid="uid://be0kad8p0jakm" path="res://assets/images/buttons/golf_normal.png" id="25_y7njm"]
-[ext_resource type="Texture2D" uid="uid://kxe0dx83gdod" path="res://assets/images/buttons/golf_pressed.png" id="26_rm4j7"]
-[ext_resource type="Texture2D" uid="uid://daqf48l3l526v" path="res://assets/images/buttons/golf_hover.png" id="27_qtsob"]
-[ext_resource type="Texture2D" uid="uid://ccjuwnpedu0mi" path="res://assets/images/buttons/golf_disabled.png" id="28_8j3tp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qd7ny"]
 shader = ExtResource("2_452g4")
@@ -131,46 +111,7 @@ theme_override_constants/margin_top = 92
 theme_override_constants/margin_right = 160
 theme_override_constants/margin_bottom = 80
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer3/Panel/MarginContainer2"]
+[node name="ButtonContainer" type="HFlowContainer" parent="MarginContainer3/Panel/MarginContainer2"]
 layout_mode = 2
-theme_override_constants/separation = 74
-
-[node name="CricketButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
-layout_mode = 2
-size_flags_vertical = 0
-texture_normal = ExtResource("9_6x12q")
-texture_pressed = ExtResource("10_5ralp")
-texture_hover = ExtResource("11_exw85")
-texture_disabled = ExtResource("12_raduh")
-
-[node name="TTButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
-layout_mode = 2
-size_flags_vertical = 0
-texture_normal = ExtResource("13_kfvd0")
-texture_pressed = ExtResource("14_eo87d")
-texture_hover = ExtResource("15_kfcyf")
-texture_disabled = ExtResource("16_pbfll")
-
-[node name="TennisButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
-layout_mode = 2
-size_flags_vertical = 0
-texture_normal = ExtResource("17_i2pvc")
-texture_pressed = ExtResource("18_u00ak")
-texture_hover = ExtResource("19_qc6qh")
-texture_disabled = ExtResource("20_4lqtp")
-
-[node name="BaseballButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
-layout_mode = 2
-size_flags_vertical = 0
-texture_normal = ExtResource("21_6v3fu")
-texture_pressed = ExtResource("22_fnb4s")
-texture_hover = ExtResource("23_eeblu")
-texture_disabled = ExtResource("24_1yu1u")
-
-[node name="GolfButton" type="TextureButton" parent="MarginContainer3/Panel/MarginContainer2/HBoxContainer" groups=["buttons"]]
-layout_mode = 2
-size_flags_vertical = 0
-texture_normal = ExtResource("25_y7njm")
-texture_pressed = ExtResource("26_rm4j7")
-texture_hover = ExtResource("27_qtsob")
-texture_disabled = ExtResource("28_8j3tp")
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 50

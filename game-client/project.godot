@@ -17,8 +17,9 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Globals="*res://scripts/globals.gd"
-SoundManager="*res://scripts/sound_manager.gd"
+Globals="*res://scripts/core/globals.gd"
+GameManager="*res://scripts/core/game_manager.gd"
+SoundManager="*res://scripts/core/sound_manager.gd"
 Ip="*res://scripts/net/ip.gd"
 Udp="*res://scripts/net/udp.gd"
 Socket="*res://scripts/net/socket.gd"

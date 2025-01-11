@@ -23,7 +23,7 @@ func _ready():
 
 func _input(event):
 	if Input.is_key_pressed(KEY_ESCAPE):
-		get_tree().change_scene_to_file("res://scenes/game_menu.tscn")
+		GameManager.goto_game_menu()
 		
 	if Input.is_key_pressed(KEY_M):
 		print("M Pressed", scoreboard.visible)
