@@ -13,6 +13,8 @@ var user_mutex : Mutex = Mutex.new()
 
 signal quaternion_updated(new_quaternion: Quaternion, sender_id: int)
 signal accelerometer_updated(new_value: Vector3, sender_id: int)
+signal user_connected(username: String, id :int)
+signal user_disconnected(username: String, id : int)
 
 func start_web_socket(no_of_connections: int) -> int:
 	socket_mutex.lock()
@@ -85,7 +87,7 @@ func _on_client_connected(id):
 		var username: String = query_params["username"]
 		connected_users[id] = username
 		send_message_to_userid(id, "SocketId:" + String.num_int64(id))
-		Globals.user_connected.emit(username)
+		Socket.user_connected.emit(username, id)
 		print("Client connected with username: %s, id: %d" % [username, id])
 	else:
 		print("Invalid connection url. Include username in query parameter")
@@ -97,6 +99,7 @@ func _on_client_disconnected(id):
 		var username: String = connected_users[id]
 		print("Client disconnected with username: %s, id: %d" % [username, id])
 		connected_users.erase(id)
+		Socket.user_disconnected.emit(username, id)
 	else:
 		print("Client disconnected with no username in dictionary, id: %d" % id)
 	user_mutex.unlock()

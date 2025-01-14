@@ -35,9 +35,4 @@ mesh = SubResource("SphereMesh_qvmtj")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_6pw1w")
 
-[node name="BallDespawnTimer" type="Timer" parent="."]
-wait_time = 5.0
-autostart = true
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="timeout" from="BallDespawnTimer" to="." method="_on_timer_timeout"]

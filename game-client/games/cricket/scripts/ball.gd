@@ -60,10 +60,6 @@ func _integrate_forces(state):
 			Globals.striked_ball.emit()
 			bat_hit = true
 
-func _on_timer_timeout():
-	Globals.ball_despawned.emit()
-	queue_free()
-
 func _on_body_entered(body):
 	if body.is_in_group("bat"):
 		camera.set_follow_target(self)

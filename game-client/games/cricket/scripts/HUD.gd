@@ -5,34 +5,27 @@ extends Control
 @onready var player_score = $MarginContainer/MarginContainer/PlayerStats/MarginContainer/PlayerScore
 @onready var player_balls = $MarginContainer/MarginContainer/PlayerStats/MarginContainer/MarginContainer/PlayerBalls
 
-var score := 0
-var wicket := 0 
-var ball_count :=0
+var state: CricketState = null
 
-func _ready():
-	_on_user_connected(Globals.current_user)
-	Globals.score_changed.connect(Callable(_on_score_changed))
-	Globals.user_connected.connect(Callable(_on_user_connected))
-
-func _on_score_changed(amount: int):
-	ball_count+=1
-	amount = 0 if amount < 0 else amount
-	score = score + amount
+func set_state(new_state: CricketState) -> void:
+	if state:
+		state.disconnect("state_changed", Callable(self, "_on_state_changed"))
 	
-	# bich ko main score
+	state = new_state
+	if state:
+		state.connect("state_changed", Callable(self, "_on_state_changed"))
+		
+func _on_state_changed(new_state: CricketState):
+	# total scores
 	rich_text_label.clear()
-	var new_score_label = "[center]" + str(score) + " - " + str(wicket) + "[/center]"
+	var new_score_label = "[center]" + str(new_state.total_score) + " - " + str(new_state.wickets_fallen) + "[/center]"
 	rich_text_label.append_text(new_score_label)
 	
-	# player wala score
+	# player scores
 	player_score.clear()
-	player_score.append_text(str(score))
-	
-	# player wala balls
+	player_score.append_text(str(new_state.current_batsman_runs))
 	player_balls.clear()
-	player_balls.append_text("("+str(ball_count)+")")
-
-func _on_user_connected(username):
-	Globals.current_user = username
+	player_balls.append_text("("+str(new_state.current_batsman_balls_faced)+")")
+	
 	player_name.clear()
-	player_name.append_text(username)
+	player_name.append_text(new_state.current_batsman)

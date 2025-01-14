@@ -4,10 +4,10 @@ class GameInfo:
 	var Name : String = ""
 	var ScenePath : String = ""
 	var NoOfPlayers : int = 1
-	
+
 var games : Dictionary = {}
 var current_game :Node = null
-var current_game_state : Dictionary = {}
+var current_game_name : String = ""
 
 signal game_started(game_name: String)
 signal game_ended(game_name: String)
@@ -53,20 +53,28 @@ func start_game(name: String) :
 	if scene:
 		current_game = scene.instantiate()
 		get_tree().root.add_child(current_game)
+		current_game_name = name
 		emit_signal("game_started", name)
 	else:
 		printerr("Failed to load scene: ", game.ScenePath)
 
 func _end_game():
 	if current_game:
+		save_state()
 		current_game.queue_free()
-		emit_signal("game_ended", current_game.name)
+		emit_signal("game_ended", current_game_name)
 		current_game = null
+		current_game_name = ""
 	
 	Socket.stop_web_socket()
 	Udp.stop_broadcasting()
 		
 func save_state():
-	pass
+	if current_game.has_method("serialize"):
+		print("State of ", current_game_name)
+		print(current_game.serialize())
+	else:
+		printerr(current_game_name, "doesn't implement save_state()")
+		
 func load_state():
 	pass

@@ -5,8 +5,9 @@ var scored_runs = 0
 func _ready():
 	Globals.ball_despawned.connect(give_runs)
 
-func give_runs():
-	Globals.score_changed.emit(scored_runs)
+func give_runs(ball : Node):
+	if ball != null:
+		Globals.runs_scored.emit(scored_runs) # null ball means game has stopped
 	scored_runs = 0;
 
 # Reward no runs when ball remains in the pitch

@@ -22,8 +22,6 @@ func _process(delta):
 				global_transform.origin = follow_target.global_transform.origin + FOLLOW_OFFSET
 				look_at(follow_target.global_transform.origin, Vector3.UP)
 	
-
-
 func set_follow_target(target: Node):
 	state = CameraState.FOLLOW_BALL
 	follow_target = target
